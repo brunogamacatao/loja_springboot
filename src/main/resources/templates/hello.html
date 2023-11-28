@@ -1,0 +1,25 @@
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Loja Spring Boot</title>
+    </head>
+    <body>
+        <form method="post" th:action="@{/hello}" th:object="${produto}">
+            <p>
+                <label>Nome: </label>
+                <input type="text" th:field="*{nome}"/>
+            </p>
+            <p>
+                <label>Preço: </label>
+                <input type="number" th:field="*{preco}"/>
+            </p>
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <p>Produtos Cadastrados:</p>
+        <ul>
+            <li th:each="p : ${produtos}">
+                <span th:text="${p.nome}"></span> - R$ <span th:text="${p.preco}"></span>
+            </li>
+        </ul>
+    </body>
+</html>
